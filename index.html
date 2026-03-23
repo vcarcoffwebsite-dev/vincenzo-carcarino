@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="it" data-theme="nero-oro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vincenzo Carcarino — Sito Ufficiale</title>
+  <meta name="description" content="Sito ufficiale di Vincenzo Carcarino — cantante napoletano.">
+  <meta property="og:title" content="Vincenzo Carcarino">
+  <meta property="og:description" content="Quando il melodico napoletano incontra la vita.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/themes.css">
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <a class="nav-logo" href="/">Vincenzo Carcarino</a>
+  <ul class="nav-links">
+    <li><a href="#about">Biografia</a></li>
+    <li id="navMusicaLi"><a href="#musica">Musica</a></li>
+    <li id="navEventiLi"><a href="#eventi">Eventi</a></li>
+    <li id="navDiscografiaLi"><a href="#discografia">Discografia</a></li>
+    <li id="navVideoLi"><a href="#video-gallery">Video</a></li>
+    <li id="navStampaLi"><a href="#stampa">Stampa</a></li>
+    <li id="navGalleryLi"><a href="#gallery">Gallery</a></li>
+    <li id="navShopLi"><a href="#shop">Shop</a></li>
+    <li id="navLinksLi"><a href="#links">Seguimi</a></li>
+    <li><a href="#contatti">Contatti</a></li>
+  </ul>
+  <button class="nav-burger" id="navBurger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" id="mobileClose">×</button>
+  <a href="#about">Biografia</a>
+  <a href="#musica">Musica</a>
+  <a href="#eventi">Eventi</a>
+  <a href="#discografia">Discografia</a>
+  <a href="#video-gallery">Video</a>
+  <a href="#stampa">Stampa</a>
+  <a href="#gallery">Gallery</a>
+  <a href="#shop">Shop</a>
+  <a href="#links">Seguimi</a>
+  <a href="#contatti">Contatti</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg" id="heroBg" style="background-image:url('https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=1600&q=80')"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">— Sito Ufficiale</p>
+    <h1 class="hero-name"><span id="heroFirst">Vincenzo</span><br><span id="heroLast">Carcarino</span></h1>
+    <p class="hero-tagline" id="heroTagline">Quando il melodico napoletano<br>incontra la vita.</p>
+  </div>
+  <div class="hero-scroll">
+    <span>Scorri</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-image-wrap fade-in">
+    <div class="about-frame"></div>
+    <div class="about-img-placeholder" id="profilePlaceholder">
+      <svg width="60" height="60" fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+    </div>
+    <img id="profileImg" class="about-img" src="" alt="Vincenzo Carcarino" style="display:none">
+  </div>
+  <div class="about-text fade-in">
+    <p class="section-label">— Chi sono</p>
+    <h2 class="section-title">La mia <em>storia</em></h2>
+    <div class="divider"></div>
+    <div class="bio-content" id="bioContent">
+      <p>Vincenzo Carcarino è un cantante napoletano che porta con sé l'eredità più autentica della tradizione partenopea, rielaborata con una sensibilità contemporanea.</p>
+      <p>Il suo singolo <em>Dimmelo Ancora</em> si distingue per una scrittura evocativa e una struttura armonica raffinata che richiama la grande tradizione della canzone d'autore napoletana.</p>
+      <p>Con la sua voce calda e intensa, Vincenzo porta sul palco l'autenticità di chi ha fatto della musica una vera ragione di vita.</p>
+    </div>
+  </div>
+</section>
+
+<!-- MUSICA -->
+<section id="musica">
+  <div class="section-centered fade-in">
+    <p class="section-label">— Ascolta</p>
+    <h2 class="section-title">La mia <em>musica</em></h2>
+    <div class="divider"></div>
+  </div>
+  <div class="musica-grid fade-in" id="musicaGrid"></div>
+</section>
+
+<!-- EVENTI -->
+<section id="eventi">
+  <div class="section-centered fade-in">
+    <p class="section-label">— Live</p>
+    <h2 class="section-title">Prossimi <em>eventi</em></h2>
+    <div class="divider"></div>
+  </div>
+  <div class="eventi-grid fade-in" id="eventiGrid"></div>
+</section>
+
+<!-- DISCOGRAFIA -->
+<section id="discografia">
+  <div class="section-centered fade-in">
+    <p class="section-label">— Opere</p>
+    <h2 class="section-title">La mia <em>discografia</em></h2>
+    <div class="divider"></div>
+  </div>
+  <div class="disco-grid fade-in" id="discografiaGrid"></div>
+</section>
+
+<!-- VIDEO GALLERY -->
+<section id="video-gallery">
+  <div class="section-centered fade-in">
+    <p class="section-label">— Video</p>
+    <h2 class="section-title">Guarda i miei <em>video</em></h2>
+    <div class="divider"></div>
+  </div>
+  <div class="video-grid fade-in" id="videoGrid"></div>
+</section>
+
+<!-- RASSEGNA STAMPA -->
+<section id="stampa">
+  <div class="section-centered fade-in">
+    <p class="section-label">— Dicono di me</p>
+    <h2 class="section-title">Rassegna <em>stampa</em></h2>
+    <div class="divider"></div>
+  </div>
+  <div class="stampa-grid fade-in" id="stampaGrid"></div>
+</section>
+
+<!-- GALLERY CAROSELLO -->
+<section id="gallery">
+  <div class="fade-in">
+    <p class="section-label">— Immagini</p>
+    <h2 class="section-title">Photo <em>Gallery</em></h2>
+    <div class="divider"></div>
+  </div>
+  <div class="carousel-wrap fade-in">
+    <div class="carousel-track" id="carouselTrack"></div>
+  </div>
+  <div class="carousel-controls">
+    <button class="carousel-btn" id="carouselPrev" aria-label="Precedente">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+    <div class="carousel-dots" id="carouselDots"></div>
+    <button class="carousel-btn" id="carouselNext" aria-label="Successivo">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+    </button>
+  </div>
+</section>
+
+<!-- COLLABORATORI -->
+<section id="collaboratori">
+  <div class="section-centered fade-in">
+    <p class="section-label">— Team</p>
+    <h2 class="section-title">I miei <em>collaboratori</em></h2>
+    <div class="divider"></div>
+  </div>
+  <div class="collab-grid fade-in" id="collaboratoriGrid"></div>
+</section>
+
+<!-- LINK PIATTAFORME -->
+<section id="links">
+  <div class="section-centered fade-in">
+    <p class="section-label">— Seguimi</p>
+    <h2 class="section-title">Ascoltami <em>ovunque</em></h2>
+    <div class="divider"></div>
+  </div>
+  <div class="links-grid fade-in" id="linksGrid"></div>
+</section>
+
+<!-- SHOP -->
+<section id="shop">
+  <div class="section-centered fade-in">
+    <p class="section-label">— Store</p>
+    <h2 class="section-title">Il mio <em>shop</em></h2>
+    <div class="divider"></div>
+  </div>
+  <div class="shop-grid fade-in" id="shopGrid"></div>
+</section>
+
+<!-- CONTATTI -->
+<section id="contatti">
+  <div class="section-centered fade-in">
+    <p class="section-label">— Scrivimi</p>
+    <h2 class="section-title">Resta in <em>contatto</em></h2>
+    <div class="divider"></div>
+  </div>
+  <div class="contact-layout fade-in">
+    <div class="contact-info">
+      <h3 class="contact-info-title">Hai una proposta?<br>Scrivimi.</h3>
+      <p class="contact-info-text" id="contactTesto">Per richieste di booking, collaborazioni, stampa o semplicemente per lasciarmi un messaggio, compila il form.</p>
+      <div style="margin-bottom:2rem">
+        <span class="contact-email-label">Email</span>
+        <a class="contact-email-link" id="contactEmailLink" href="mailto:info@vincenzocarcarino.it">info@vincenzocarcarino.it</a>
+      </div>
+      <p class="contact-note">Rispondo di solito entro 24–48 ore.</p>
+    </div>
+
+    <div class="contact-form-wrap">
+      <form id="contactForm" novalidate>
+        <div class="form-row-two">
+          <div class="form-field">
+            <label for="cfNome">Nome *</label>
+            <input type="text" id="cfNome" name="nome" placeholder="Il tuo nome" autocomplete="name">
+            <span class="field-error" id="errNome"></span>
+          </div>
+          <div class="form-field">
+            <label for="cfEmail">Email *</label>
+            <input type="email" id="cfEmail" name="email" placeholder="la-tua@email.it" autocomplete="email">
+            <span class="field-error" id="errEmail"></span>
+          </div>
+        </div>
+        <div class="form-field">
+          <label for="cfOggetto">Oggetto *</label>
+          <div class="select-wrap">
+            <select id="cfOggetto" name="oggetto">
+              <option value="">— Seleziona un motivo —</option>
+              <option value="booking">🎤 Richiesta Booking / Prenotazione</option>
+              <option value="collaborazione">🤝 Proposta di Collaborazione</option>
+              <option value="stampa">📰 Stampa e Media</option>
+              <option value="fan">💛 Messaggio da un Fan</option>
+              <option value="altro">✉ Altro</option>
+            </select>
+            <svg class="select-arrow" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <span class="field-error" id="errOggetto"></span>
+        </div>
+        <div class="form-field">
+          <label for="cfMessaggio">Messaggio *</label>
+          <textarea id="cfMessaggio" name="messaggio" rows="5" placeholder="Scrivi il tuo messaggio..."></textarea>
+          <div class="char-count"><span id="charCount">0</span> / 3000</div>
+          <span class="field-error" id="errMessaggio"></span>
+        </div>
+        <div class="hcaptcha-wrap" id="hcaptchaWrap"></div>
+        <button type="submit" class="form-submit" id="formSubmit">
+          <span id="submitText">Invia messaggio</span>
+          <svg id="submitArrow" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          <svg id="submitSpinner" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none;animation:spin 0.8s linear infinite"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4"/></svg>
+        </button>
+        <div id="formSuccess" class="form-feedback form-success" style="display:none">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+          <span id="successMsg">Messaggio inviato!</span>
+        </div>
+        <div id="formError" class="form-feedback form-error" style="display:none">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/></svg>
+          <span id="errorMsg">Errore nell'invio.</span>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo artist-name">Vincenzo Carcarino</div>
+  <div class="footer-copy">© <span id="footerYear"></span> Vincenzo Carcarino — Tutti i diritti riservati</div>
+</footer>
+
+<script>document.getElementById('footerYear').textContent = new Date().getFullYear();</script>
+<script src="/assets/js/main.js"></script>
+<script>
+  if (window.netlifyIdentity) {
+    window.netlifyIdentity.on("init", user => {
+      if (!user) {
+        window.netlifyIdentity.on("login", () => { document.location.href = "/admin/"; });
+      }
+    });
+  }
+</script>
+</body>
+</html>

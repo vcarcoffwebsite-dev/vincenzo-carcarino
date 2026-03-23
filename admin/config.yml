@@ -1,0 +1,193 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "static/uploads"
+public_folder: "/static/uploads"
+
+local_backend: false
+
+site_url: https://vincenzocarcarino.netlify.app
+
+collections:
+
+  # ===== IMPOSTAZIONI GENERALI =====
+  - name: "impostazioni"
+    label: "⚙️ Impostazioni Sito"
+    files:
+      - name: "generale"
+        label: "Generale"
+        file: "content/impostazioni.json"
+        fields:
+          - { label: "Nome Artista", name: "nome_artista", widget: "string", default: "Vincenzo Carcarino" }
+          - { label: "Tagline Hero", name: "tagline", widget: "string", default: "Quando il melodico napoletano incontra la vita." }
+          - { label: "Foto Hero (sfondo)", name: "hero_image", widget: "image", required: false }
+          - { label: "Foto Profilo (biografia)", name: "profile_image", widget: "image", required: false }
+          - label: "Tema Grafico"
+            name: "tema"
+            widget: "select"
+            options:
+              - { label: "🖤 Nero / Oro — Elegante", value: "nero-oro" }
+              - { label: "🌊 Bianco / Blu notte — Mediterraneo", value: "bianco-blu" }
+              - { label: "🏺 Sabbia / Terracotta — Napoletano", value: "sabbia-terracotta" }
+              - { label: "📷 Bianco / Nero Retrò — Vintage", value: "bianco-retro" }
+            default: "nero-oro"
+          - label: "Biografia"
+            name: "biografia"
+            widget: "object"
+            fields:
+              - { label: "Paragrafo 1", name: "p1", widget: "text", required: false }
+              - { label: "Paragrafo 2", name: "p2", widget: "text", required: false }
+              - { label: "Paragrafo 3", name: "p3", widget: "text", required: false }
+          - label: "Link Piattaforme"
+            name: "links"
+            widget: "object"
+            fields:
+              - { label: "Spotify", name: "spotify", widget: "string", required: false }
+              - { label: "YouTube", name: "youtube", widget: "string", required: false }
+              - { label: "Amazon Music", name: "amazon", widget: "string", required: false }
+              - { label: "Facebook", name: "facebook", widget: "string", required: false }
+              - { label: "Apple Music", name: "apple", widget: "string", required: false }
+              - { label: "Instagram", name: "instagram", widget: "string", required: false }
+          - label: "Contatti"
+            name: "contatti"
+            widget: "object"
+            fields:
+              - { label: "Email di ricezione messaggi", name: "email", widget: "string", required: false }
+              - { label: "Testo introduttivo", name: "testo", widget: "text", required: false }
+              - { label: "hCaptcha Site Key", name: "hcaptcha_key", widget: "string", required: false, hint: "Ottieni la chiave su hcaptcha.com (gratuito)" }
+
+  # ===== MUSICA =====
+  - name: "musica"
+    label: "🎵 Musica"
+    folder: "content/musica"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Titolo brano", name: "title", widget: "string" }
+      - { label: "Ordine", name: "order", widget: "number", default: 1 }
+      - label: "Tipo"
+        name: "tipo"
+        widget: "select"
+        options:
+          - { label: "🎵 File Audio (MP3)", value: "audio" }
+          - { label: "🎬 Video YouTube", value: "youtube" }
+        default: "audio"
+      - { label: "File Audio (MP3)", name: "audio_file", widget: "file", required: false, hint: "Solo per tipo Audio" }
+      - { label: "URL YouTube", name: "youtube_url", widget: "string", required: false, hint: "Solo per tipo YouTube — es. https://youtu.be/xxxx" }
+      - { label: "Copertina (opzionale)", name: "cover", widget: "image", required: false }
+      - { label: "Anno", name: "anno", widget: "string", required: false }
+      - { label: "Descrizione", name: "descrizione", widget: "text", required: false }
+
+  # ===== EVENTI =====
+  - name: "eventi"
+    label: "📅 Eventi"
+    folder: "content/eventi"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Nome Evento / Locale", name: "title", widget: "string" }
+      - { label: "Data", name: "data", widget: "datetime", date_format: "DD/MM/YYYY", time_format: false }
+      - { label: "Ora", name: "ora", widget: "string", required: false, hint: "es. 21:30" }
+      - { label: "Indirizzo", name: "indirizzo", widget: "string" }
+      - { label: "Immagine Evento", name: "immagine", widget: "image", required: false }
+      - { label: "Link Biglietti / Prenotazione", name: "ticket_url", widget: "string", required: false }
+      - { label: "Note aggiuntive", name: "note", widget: "text", required: false }
+
+  # ===== DISCOGRAFIA =====
+  - name: "discografia"
+    label: "💿 Discografia"
+    folder: "content/discografia"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Titolo", name: "title", widget: "string" }
+      - { label: "Ordine", name: "order", widget: "number", default: 1 }
+      - label: "Tipo"
+        name: "tipo"
+        widget: "select"
+        options:
+          - { label: "Album", value: "album" }
+          - { label: "Singolo", value: "singolo" }
+          - { label: "EP", value: "ep" }
+        default: "singolo"
+      - { label: "Anno", name: "anno", widget: "string" }
+      - { label: "Copertina", name: "copertina", widget: "image", required: false }
+      - { label: "Descrizione", name: "descrizione", widget: "text", required: false }
+      - { label: "Link Spotify", name: "spotify_url", widget: "string", required: false }
+      - { label: "Link YouTube", name: "youtube_url", widget: "string", required: false }
+
+  # ===== VIDEO GALLERY =====
+  - name: "video"
+    label: "🎬 Video Gallery"
+    folder: "content/video"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Titolo", name: "title", widget: "string" }
+      - { label: "Ordine", name: "order", widget: "number", default: 1 }
+      - { label: "URL YouTube", name: "youtube_url", widget: "string", hint: "es. https://youtu.be/xxxx" }
+      - { label: "Descrizione", name: "descrizione", widget: "text", required: false }
+
+  # ===== RASSEGNA STAMPA =====
+  - name: "stampa"
+    label: "📰 Rassegna Stampa"
+    folder: "content/stampa"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Titolo articolo", name: "title", widget: "string" }
+      - { label: "Testata / Fonte", name: "testata", widget: "string" }
+      - { label: "Data", name: "data", widget: "datetime", date_format: "DD/MM/YYYY", time_format: false }
+      - { label: "Estratto / Citazione", name: "estratto", widget: "text" }
+      - { label: "Link articolo", name: "url", widget: "string", required: false }
+      - { label: "Logo testata", name: "logo", widget: "image", required: false }
+
+  # ===== GALLERY =====
+  - name: "gallery"
+    label: "🖼️ Gallery Foto"
+    folder: "content/gallery"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Didascalia", name: "title", widget: "string", required: false }
+      - { label: "Ordine", name: "order", widget: "number", default: 1 }
+      - { label: "Foto", name: "foto", widget: "image" }
+
+  # ===== COLLABORATORI =====
+  - name: "collaboratori"
+    label: "🤝 Collaboratori"
+    folder: "content/collaboratori"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Nome", name: "title", widget: "string" }
+      - { label: "Ordine", name: "order", widget: "number", default: 1 }
+      - { label: "Ruolo", name: "ruolo", widget: "string", hint: "es. Produttore, Autore, Musicista..." }
+      - { label: "Foto", name: "foto", widget: "image", required: false }
+      - { label: "Descrizione", name: "descrizione", widget: "text", required: false }
+      - { label: "Link (sito/social)", name: "url", widget: "string", required: false }
+
+  # ===== SHOP =====
+  - name: "shop"
+    label: "🛒 Shop"
+    folder: "content/shop"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Nome prodotto", name: "title", widget: "string" }
+      - { label: "Ordine", name: "order", widget: "number", default: 1 }
+      - { label: "Foto prodotto", name: "foto", widget: "image" }
+      - { label: "Prezzo (€)", name: "prezzo", widget: "number", value_type: "float" }
+      - { label: "Descrizione", name: "descrizione", widget: "text" }
+      - label: "Tipo prodotto"
+        name: "tipo"
+        widget: "select"
+        options:
+          - { label: "CD", value: "cd" }
+          - { label: "Vinile", value: "vinile" }
+          - { label: "Merchandise", value: "merch" }
+          - { label: "Download digitale", value: "digitale" }
+        default: "cd"
+      - { label: "Link PayPal (Buy Now)", name: "paypal_url", widget: "string", hint: "Genera il link da paypal.com/buttons" }
+      - { label: "Disponibile", name: "disponibile", widget: "boolean", default: true }

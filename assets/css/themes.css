@@ -1,0 +1,67 @@
+/* =============================================
+   TEMI GRAFICI — Vincenzo Carcarino
+   ============================================= */
+
+/* ===== TEMA 1: NERO / ORO (default) ===== */
+[data-theme="nero-oro"] {
+  --primary:     #c9a84c;
+  --primary-light: #e8c97a;
+  --bg:          #0a0a0a;
+  --bg2:         #111111;
+  --bg3:         #1a1a1a;
+  --text:        #e8e0d0;
+  --text-muted:  #8a8070;
+  --border:      rgba(201,168,76,0.2);
+  --card-bg:     #1a1a1a;
+  --hero-filter: brightness(0.45);
+  --font-display: 'Playfair Display', serif;
+  --font-body:    'Raleway', sans-serif;
+}
+
+/* ===== TEMA 2: BIANCO / BLU NOTTE ===== */
+[data-theme="bianco-blu"] {
+  --primary:     #1a3a6b;
+  --primary-light: #2d5aa0;
+  --bg:          #f8f6f2;
+  --bg2:         #ffffff;
+  --bg3:         #eef2f8;
+  --text:        #1a1a2e;
+  --text-muted:  #5a6a8a;
+  --border:      rgba(26,58,107,0.15);
+  --card-bg:     #ffffff;
+  --hero-filter: brightness(0.5) saturate(1.2);
+  --font-display: 'Playfair Display', serif;
+  --font-body:    'Raleway', sans-serif;
+}
+
+/* ===== TEMA 3: SABBIA / TERRACOTTA ===== */
+[data-theme="sabbia-terracotta"] {
+  --primary:     #c0572a;
+  --primary-light: #e07a4f;
+  --bg:          #f5efe6;
+  --bg2:         #ede4d6;
+  --bg3:         #faf6f0;
+  --text:        #2c1a0e;
+  --text-muted:  #8a6a50;
+  --border:      rgba(192,87,42,0.2);
+  --card-bg:     #faf6f0;
+  --hero-filter: brightness(0.45) sepia(0.3);
+  --font-display: 'Playfair Display', serif;
+  --font-body:    'Raleway', sans-serif;
+}
+
+/* ===== TEMA 4: BIANCO / NERO RETRÒ ===== */
+[data-theme="bianco-retro"] {
+  --primary:     #1a1a1a;
+  --primary-light: #444444;
+  --bg:          #f9f7f4;
+  --bg2:         #ffffff;
+  --bg3:         #f0ece6;
+  --text:        #1a1a1a;
+  --text-muted:  #888880;
+  --border:      rgba(26,26,26,0.15);
+  --card-bg:     #ffffff;
+  --hero-filter: brightness(0.4) grayscale(1);
+  --font-display: 'Playfair Display', serif;
+  --font-body:    'Raleway', sans-serif;
+}

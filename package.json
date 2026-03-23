@@ -1,0 +1,12 @@
+{
+  "name": "vincenzo-carcarino-site",
+  "version": "1.0.0",
+  "description": "Sito ufficiale Vincenzo Carcarino",
+  "scripts": {
+    "build": "node build.js",
+    "dev": "npx serve ."
+  },
+  "dependencies": {
+    "nodemailer": "^6.9.0"
+  }
+}
