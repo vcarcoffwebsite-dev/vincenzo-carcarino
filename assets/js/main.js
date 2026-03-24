@@ -614,7 +614,7 @@
     return icons[type] || '';
   }
 
-})();
+//})();
 
   // ===== ESTRAI YOUTUBE ID =====
   function ytId(url) {
