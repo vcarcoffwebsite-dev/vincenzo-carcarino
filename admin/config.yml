@@ -4,12 +4,13 @@
 #  Media: /static/uploads
 # ==============================================================
 
+
 backend:
   name: github
   repo: vcarcoffwebsite-dev/vincenzo-carcarino
   branch: main
-  base_url: https://vincenzocarcarino.it
-  auth_endpoint: api/auth
+  auth_type: implicit
+  app_id: TUO_GITHUB_OAUTH_APP_ID
 
 media_folder: static/uploads
 public_folder: /static/uploads
