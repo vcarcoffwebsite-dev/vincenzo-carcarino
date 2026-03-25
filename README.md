@@ -1,163 +1,111 @@
-# Vincenzo Carcarino — Sito v2
-## Guida completa: GitHub + Netlify + Decap CMS
+# 🎵 Vincenzo Carcarino — Setup Vercel + Decap CMS
 
----
-
-## STRUTTURA FILE
+## File inclusi in questo pacchetto
 
 ```
-vincenzo-carcarino/
-├── index.html                  ← Sito principale
-├── netlify.toml                ← Configurazione Netlify
-├── build.js                    ← Script build (genera manifest)
-├── package.json
-├── admin/
-│   ├── index.html              ← Pannello CMS
-│   └── config.yml              ← Configurazione CMS
-├── assets/
-│   ├── css/
-│   │   ├── themes.css          ← 4 temi grafici
-│   │   └── main.css            ← Stili principali
-│   └── js/
-│       └── main.js             ← Logica sito
-├── content/
-│   ├── impostazioni.json       ← Dati generali sito
-│   ├── musica/                 ← Brani e video
-│   ├── eventi/                 ← Date e concerti
-│   ├── discografia/            ← Album e singoli
-│   ├── video/                  ← Video gallery
-│   ├── stampa/                 ← Rassegna stampa
-│   ├── gallery/                ← Foto carosello
-│   ├── collaboratori/          ← Team
-│   └── shop/                   ← Prodotti
-├── netlify/
-│   └── functions/
-│       └── contact.js          ← Invio email serverless
-└── static/uploads/             ← Foto caricate dal CMS
+vercel.json          → configurazione Vercel
+package.json         → dipendenze (nodemailer)
+api/contact.js       → form contatti (hCaptcha + SMTP Aruba)
+api/auth.js          → OAuth GitHub per Decap CMS
+admin/index.html     → pannello CMS
+admin/config.yml     → configurazione CMS (tutte le sezioni)
 ```
 
 ---
 
-## PASSO 1 — GITHUB
+## STEP 1 — Copia i file nel repo GitHub
 
-1. Vai su **github.com** → crea account gratuito
-2. Clicca **New repository** → nome: `vincenzo-carcarino`
-3. Lascia pubblico (necessario per Netlify gratuito)
-4. **Non** inizializzare con README
-5. Carica tutti i file del progetto:
-   - Scarica **GitHub Desktop** (desktop.github.com) — molto più semplice
-   - Oppure usa il tasto "uploading an existing file" su GitHub
+Copia questi file nel repo `vcarcoffwebsite-dev/vincenzo-carcarino`:
+- `vercel.json` → nella root
+- `package.json` → nella root
+- `api/` → nella root
+- `admin/` → nella root
 
 ---
 
-## PASSO 2 — NETLIFY
+## STEP 2 — GitHub OAuth App (per il CMS)
 
-1. Vai su **netlify.com** → Sign up con GitHub
-2. Clicca **Add new site → Import an existing project**
-3. Seleziona **GitHub** → autorizza → scegli il repo `vincenzo-carcarino`
-4. Build settings:
-   - **Build command**: `node build.js`
-   - **Publish directory**: `.`
-5. Clicca **Deploy site**
-6. Il sito sarà live su `xxxxx.netlify.app` in 2 minuti!
-
----
-
-## PASSO 3 — NETLIFY IDENTITY (per il CMS)
-
-1. Nel pannello Netlify → **Site configuration → Identity**
-2. Clicca **Enable Identity**
-3. Vai su **Registration** → seleziona **Invite only**
-4. Vai su **Services → Git Gateway** → clicca **Enable Git Gateway**
-5. Vai su **Identity** → **Invite users** → inserisci la tua email
-6. Riceverai un'email → clicca il link → imposta password
-
-Da quel momento accedi al CMS su:
-`https://tuosito.netlify.app/admin/`
+1. Vai su https://github.com/settings/developers
+2. Clicca **"New OAuth App"**
+3. Compila:
+   - Application name: `Vincenzo Carcarino CMS`
+   - Homepage URL: `https://vincenzocarcarino.it`
+   - Authorization callback URL: `https://vincenzocarcarino.it/api/auth?action=callback`
+4. Clicca **Register application**
+5. Copia **Client ID** e **Client Secret** → ti servono nel prossimo step
 
 ---
 
-## PASSO 4 — CONFIGURARE IL CMS
+## STEP 3 — Deploy su Vercel
 
-Accedi al pannello admin e configura:
+1. Vai su https://vercel.com e accedi con GitHub
+2. Clicca **"Add New Project"**
+3. Importa il repo `vcarcoffwebsite-dev/vincenzo-carcarino`
+4. Framework Preset: **Other**
+5. Root Directory: lascia `/`
+6. Clicca **"Environment Variables"** e aggiungi:
 
-### ⚙️ Impostazioni Sito
-- Nome artista, tagline, tema grafico
-- Foto hero e foto profilo
-- Biografia (3 paragrafi)
-- Link piattaforme musicali
-- Email contatti
+| Nome variabile       | Valore                          |
+|---------------------|---------------------------------|
+| `GITHUB_CLIENT_ID`  | (dalla OAuth App GitHub)        |
+| `GITHUB_CLIENT_SECRET` | (dalla OAuth App GitHub)     |
+| `HCAPTCHA_SECRET`   | (dalla dashboard hCaptcha)      |
+| `SMTP_HOST`         | `smtpauth.aruba.it`             |
+| `SMTP_PORT`         | `465`                           |
+| `SMTP_USER`         | `info@vincenzocarcarino.it`     |
+| `SMTP_PASS`         | (password casella Aruba)        |
+| `MAIL_TO`           | `info@vincenzocarcarino.it`     |
+| `SITE_URL`          | `https://vincenzocarcarino.it`  |
 
-### 🎵 Musica
-- Aggiungi brani MP3 o video YouTube
-- Carica la copertina
-- La sezione appare automaticamente
-
-### 📅 Eventi
-- Aggiungi date, orari, indirizzi
-- Carica una foto per ogni evento
-- Gli eventi passati spariscono in automatico
-
-### 💿 Discografia, 🎬 Video, 📰 Stampa, ecc.
-- Tutto funziona allo stesso modo
-- Le sezioni vuote si nascondono automaticamente
+7. Clicca **Deploy** 🚀
 
 ---
 
-## PASSO 5 — EMAIL CONTATTI
+## STEP 4 — Dominio Aruba su Vercel
 
-Il form usa una **Netlify Function** per inviare email.
-
-1. Nel pannello Netlify → **Site configuration → Environment variables**
-2. Aggiungi queste variabili:
-
-| Variabile | Valore |
-|-----------|--------|
-| `SMTP_HOST` | `smtp.gmail.com` (o il tuo provider) |
-| `SMTP_PORT` | `587` |
-| `SMTP_USER` | la tua email Gmail |
-| `SMTP_PASS` | app password Gmail* |
-| `CONTACT_EMAIL` | email di Vincenzo su Aruba |
-| `HCAPTCHA_SECRET` | secret key da hcaptcha.com |
-
-*Per Gmail: Impostazioni → Sicurezza → Password per le app
-
-### hCaptcha (anti-spam)
-1. Vai su **hcaptcha.com** → crea account gratuito
-2. Aggiungi il tuo sito → ottieni **Site Key** e **Secret Key**
-3. Nel CMS → Impostazioni → Contatti → incolla la **Site Key**
-4. In Netlify → Environment variables → `HCAPTCHA_SECRET` = la **Secret Key**
+1. Su Vercel → progetto → **Settings → Domains**
+2. Aggiungi `vincenzocarcarino.it`
+3. Vercel ti mostra i record DNS da inserire, tipo:
+   - `A` → `76.76.21.21`
+   - `CNAME www` → `cname.vercel-dns.com`
+4. Vai su **Aruba → Pannello di controllo → DNS**
+5. Inserisci quei record (sostituisci quelli esistenti se necessario)
+6. Attendi 15-60 minuti per la propagazione
 
 ---
 
-## PASSO 6 — DOMINIO PERSONALIZZATO (opzionale)
+## STEP 5 — Accedere al CMS
 
-1. Acquista `vincenzocarcarino.it` su **Aruba** (~10€/anno)
-2. Nel pannello Netlify → **Domain management → Add domain**
-3. Inserisci `vincenzocarcarino.it`
-4. Netlify ti dà i **DNS da copiare** su Aruba
-5. Su Aruba → gestione DNS → sostituisci i nameserver
-6. In 24-48h il dominio punta al sito Netlify
+1. Vai su `https://vincenzocarcarino.it/admin/`
+2. Clicca **"Login with GitHub"**
+3. Autorizza l'app
+4. Sei dentro il pannello CMS!
 
 ---
 
-## AGGIORNARE IL SITO
+## Note SMTP Aruba
 
-Ogni volta che modifichi un contenuto dal CMS:
-1. Decap CMS salva il file su GitHub
-2. Netlify rileva la modifica
-3. Ricostruisce il sito in ~30 secondi
-4. Il sito è aggiornato automaticamente ✅
+- Crea la casella `info@vincenzocarcarino.it` dal pannello Aruba
+- Host: `smtpauth.aruba.it`  
+- Porta: `465` (SSL) oppure `587` (TLS)
+- User: indirizzo email completo
+- Pass: password della casella
 
 ---
 
-## TEMI DISPONIBILI
+## Struttura cartelle content (già nel repo)
 
-| Tema | Stile |
-|------|-------|
-| `nero-oro` | Elegante, classico (default) |
-| `bianco-blu` | Luminoso, mediterraneo |
-| `sabbia-terracotta` | Caldo, napoletano |
-| `bianco-retro` | Vintage, fotografico |
-
-Si cambia da **CMS → Impostazioni → Tema Grafico**
+```
+content/
+  impostazioni.json      ← impostazioni globali
+  musica/                ← file .md per ogni brano/video
+  eventi/                ← file .md per ogni evento
+  discografia/           ← file .md per ogni release
+  video/                 ← file .md per video gallery
+  stampa/                ← file .md per articoli stampa
+  gallery/               ← file .md per foto carosello
+  collaboratori/         ← file .md per credits
+  shop/                  ← file .md per prodotti
+static/
+  uploads/               ← immagini caricate dal CMS
+```
